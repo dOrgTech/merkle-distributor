@@ -13,7 +13,7 @@
 Assuming we have a snapshot of `RoboToken` holders at `scripts/ray-dao/snapshot.json` (numbers in ether):
 ```json
 {
-  "block": 11214023, // optional
+  "block": 11214023,
   "assets": [
     {
       "address": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
