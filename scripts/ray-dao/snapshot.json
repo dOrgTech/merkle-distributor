@@ -1,0 +1,53 @@
+{
+  "block": 11214023,
+  "assets": [
+    {
+      "address": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
+      "symbol": "BUSD",
+      "totalSupply": "10",
+      "balances": {
+        "0x28ff8e457feF9870B9d1529FE68Fbb95C3181f64": "1"
+      }
+    },
+    {
+      "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+      "symbol": "sUSD",
+      "totalSupply": "10",
+      "balances": {
+        "0x28ff8e457feF9870B9d1529FE68Fbb95C3181f64": "1"
+      }
+    },
+    {
+      "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "symbol": "DAI",
+      "totalSupply": "10",
+      "balances": {
+        "0x28ff8e457feF9870B9d1529FE68Fbb95C3181f64": "1"
+      }
+    },
+    {
+      "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+      "symbol": "SAI",
+      "totalSupply": "10",
+      "balances": {
+        "0x28ff8e457feF9870B9d1529FE68Fbb95C3181f64": "1"
+      }
+    },
+    {
+      "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "symbol": "USDC",
+      "totalSupply": "10",
+      "balances": {
+        "0x28ff8e457feF9870B9d1529FE68Fbb95C3181f64": "1"
+      }
+    },
+    {
+      "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "symbol": "WETH",
+      "totalSupply": "10",
+      "balances": {
+        "0x28ff8e457feF9870B9d1529FE68Fbb95C3181f64": "1"
+      }
+    }
+  ]
+}
