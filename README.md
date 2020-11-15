@@ -20,7 +20,8 @@ Assuming we have a snapshot of `RoboToken` holders at `scripts/ray-dao/snapshot.
       "symbol": "BUSD",
       "totalSupply": "10",
       "balances": {
-        "0x28ff8e457feF9870B9d1529FE68Fbb95C3181f64": "1"
+        "0x28ff8e457feF9870B9d1529FE68Fbb95C3181f64": "1",
+        "0x91c503590B500F9EC4b4389B106f916558AfF83c": "1"
       }
     }
   ]
@@ -39,18 +40,12 @@ Take the resulting `merkleRoot` from the output and include in constructor param
 To create the proof for a given account and call `MerkleDistributor.claim()`:
 
 ```javascript
-import BalanceTree from 'src/balance-tree'
-import airdrop from 'scripts/ray-dao/airdrop.json'
-
-const accounts = Object.keys(airdrop);
-const tree = new BalanceTree(accounts.map((account, ix) => ({
-  account,
-  amount: BigNumber.from(airdrop[account])
-})))
+import { parseBalanceMap } from 'src/parse-balance-map'
+import airdrop from 'scripts/ray-dao/airdrop.json' // this can be uploaded to cloudflare / ipfs
 
 const myAccount = '0x....'
-const myIdx = accounts.indexOf(myAccount)
+const data = parseBalanceMap(airdrop)
+const { index, proof } = data.claims[myAccount];
 
-const proof = tree.getProof(myIdx, myAccount, BigNumber.from(airdrop[myAccount]))
-await distributorContract.claim(myIDx, myAccount, airdrop[myAccount], proof, { from: myAccount })
+await airdropContract.claim(index, myAccount, Number(airdrop[myAccount]), proof, { from: myAccount })
 ```
