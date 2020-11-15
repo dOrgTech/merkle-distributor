@@ -40,12 +40,13 @@ Take the resulting `merkleRoot` from the output and include in constructor param
 To create the proof for a given account and call `MerkleDistributor.claim()`:
 
 ```javascript
+import { BigNumber } from 'ethers'
 import { parseBalanceMap } from 'src/parse-balance-map'
 import airdrop from 'scripts/ray-dao/airdrop.json' // this can be uploaded to cloudflare / ipfs
 
 const myAccount = '0x....'
 const data = parseBalanceMap(airdrop)
-const { index, proof } = data.claims[myAccount];
+const { index, proof, amount } = data.claims[myAccount];
 
-await airdropContract.claim(index, myAccount, Number(airdrop[myAccount]), proof, { from: myAccount })
+await airdropContract.claim(index, myAccount, BigNumber.from(amount), proof, { from: myAccount })
 ```
