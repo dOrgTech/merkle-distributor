@@ -36,7 +36,10 @@ The `block` property is just for reference of the snapshot.
 }
 ```
 
-For each object in `assets`, and for each account in `balances`, we calculate the % of tokens of the `totalSupply` the account has in order to calculate their rewards owed. 
+We need to set `ROBO_REWARD_POOL_PER_ASSET` constant in the script `scripts/airdrop.ts` that specifies how much ROBO should be allocated for each asset.
+
+
+For each object in `assets`, and for each account in `balances`, we calculate the % of tokens of the `totalSupply` the account has in order to calculate their rewards owed (in ROBO).
 
 Generate a mapping of claimable `ROBO` and the associated Merkle root:
 ```
@@ -46,6 +49,8 @@ yarn ray:airdrop
 ```
 
 Take the resulting `merkleRoot` from the output and include in constructor params for `MerkleDistributor.sol`
+
+Now, each account has to generate their merkle proof and submit to the contract's function `claim()` in order for their ROBO tokens to be transferred to their account (only once). This is assuming that during the deploy process, we minted enough ROBO to the `MerkleDistributor` contract to distribute
 
 To create the proof for a given account and call `MerkleDistributor.claim()`:
 
