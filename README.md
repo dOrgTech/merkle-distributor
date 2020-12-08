@@ -10,7 +10,15 @@
 `yarn compile && yarn test`
 
 ## Airdrop (ROBO)
-Assuming we have a snapshot of `RoboToken` holders at `scripts/ray-dao/snapshot.json` (numbers in ether):
+Assuming we have a snapshot of `RoboToken` holders at `scripts/ray-dao/snapshot.json` (numbers in ether)
+
+For each asset (`RoboToken`) that RAY supports, we need a snapshot of:
+- how many tokens each account has (`balances`)
+- we need the `address` of the contract
+- `symbol`
+- the total supply of the token at the time of the snapshot
+
+The `block` property is just for reference of the snapshot. 
 ```json
 {
   "block": 11214023,
@@ -27,6 +35,8 @@ Assuming we have a snapshot of `RoboToken` holders at `scripts/ray-dao/snapshot.
   ]
 }
 ```
+
+For each object in `assets`, and for each account in `balances`, we calculate the % of tokens of the `totalSupply` the account has in order to calculate their rewards owed. 
 
 Generate a mapping of claimable `ROBO` and the associated Merkle root:
 ```
